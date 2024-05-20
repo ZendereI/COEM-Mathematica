@@ -1,0 +1,27 @@
+(* Funcion Principal *)
+VR[r_, \[Theta]_, \[CurlyPhi]_] := {r*Sin[\[Theta]]*Cos[\[CurlyPhi]],r*Sin[\[Theta]]*Sin[\[CurlyPhi]], r*Cos[\[Theta]]}
+
+(* Caso 1: Describe una recta (o parte de ella) perteneciente al semiplano *)
+ParametricPlot3D[VR[r, 50*Pi/180, 30*Pi/180], {r, 0, 15}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+ParametricPlot3D[VR[r, 50*Pi/180, 30*Pi/180], {r, 10, 15}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+
+(* Caso 2: Describe una circunferencia (o parte de ella) de una circunferencia paralela al plano XY *)
+ParametricPlot3D[VR[10, \[Theta], 30*Pi/180], {\[Theta], 0, Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+ParametricPlot3D[VR[10, Pi/4, \[CurlyPhi]], {\[CurlyPhi], 0, 2*Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+
+(* Caso 3: Describe una esfera (o parte de ella) *)
+ParametricPlot3D[VR[15, \[Theta], \[CurlyPhi]], {\[Theta], 0, Pi}, {\[CurlyPhi], 0, 2*Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+ParametricPlot3D[VR[15, \[Theta], \[CurlyPhi]], {\[Theta], 0, Pi/2}, {\[CurlyPhi], 0, Pi/2}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+
+(* Caso 4: Describe un cono (o parte de el) ubicado sobre el eje z, con apertura=2*Theta, altura=|z|_max=|r_max*Cos(Theta)| *)
+ParametricPlot3D[VR[r, Pi/3, \[CurlyPhi]], {r, 0, 15}, {\[CurlyPhi], 0, 2*Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+ParametricPlot3D[VR[r, Pi/3, \[CurlyPhi]], {r, 10, 15}, {\[CurlyPhi], Pi/2, 2*Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+
+(* Caso 5: Describe un semicirculo (o parte de el), Radio=r_max, se encuentra en el semiplano Phi=cte  *)
+ParametricPlot3D[VR[r, \[Theta], Pi/6], {r, 0, 15}, {\[Theta], 0, Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+
+(* Caso 6: Describe el volumen de una esfera (o parte de ella) o entre 2 esferas *)
+Table[VR[r, \[Theta], \[CurlyPhi]], {r, 0.01, 10, 2}]
+ParametricPlot3D[%, {\[Theta], 0, Pi}, {\[CurlyPhi], 0, Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
+Table[VR[r, \[Theta], \[CurlyPhi]], {r, 0.01, 10, 1}]
+ParametricPlot3D[%, {\[Theta], 0, Pi}, {\[CurlyPhi], 0, Pi}, PlotRange -> {{-20, 20}, {-20, 20}, {-20, 20}}, AxesLabel -> {"X", "Y", "Z"}, AxesOrigin -> {0, 0, 0}]
