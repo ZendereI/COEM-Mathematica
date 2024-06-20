@@ -1,0 +1,10 @@
+ParametricPlot[
+ Re[{50, -50*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{50, 50*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[
+ Re[{50, 100*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{50, 100}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{50, -100}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{50, 0}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{0, 100}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
+ParametricPlot[Re[{, }*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}]
