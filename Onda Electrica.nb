@@ -6,3 +6,37 @@ ParametricPlot[Re[{50, -100}*Exp[I*(10^6*t - 0)]], {t, 0, 3*Pi/10^6}]
 ParametricPlot[Re[{50, 0}*Exp[I*(10^6*t - 0)]], {t, 0, 3*Pi/10^6}]
 ParametricPlot[Re[{0, 100}*Exp[I*(10^6*t - 0)]], {t, 0, 3*Pi/10^6}]
 Manipulate[Re[{50, -50}*Exp[I*(10^6*t - 0)]], {t, 0, 3*Pi/10^6, 3*Pi/(36*10^6)}]
+
+ParametricPlot[Re[{50, -50*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6},
+   PlotRange -> All, AxesLabel -> {"Eu", "Ev"}];
+Manipulate[
+ Show[%, ParametricPlot[
+   Re[u*{50, -50*I}*Exp[I*(10^6*t - 0)]], {u, 0, 1}, PlotRange -> All,
+    AxesLabel -> {"Eu", "Ev"}]], {t, 0, 2*Pi/10^6, 2 Pi/(36*10^6)}]
+ParametricPlot[Re[{50, 50*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}, 
+  PlotRange -> All, AxesLabel -> {"Eu", "Ev"}];
+Manipulate[
+ Show[%, ParametricPlot[
+   Re[u*{50, 50*I}*Exp[I*(10^6*t - 0)]], {u, 0, 1}, PlotRange -> All, 
+   AxesLabel -> {"Eu", "Ev"}]], {t, 0, 2*Pi/10^6, 2 Pi/(36*10^6)}]
+ParametricPlot[Re[{50, 100*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6},
+   PlotRange -> All, AxesLabel -> {"Eu", "Ev"}];
+Manipulate[
+ Show[%, ParametricPlot[
+   Re[u*{50, -100*I}*Exp[I*(10^6*t - 0)]], {u, 0, 1}, 
+   PlotRange -> All, AxesLabel -> {"Eu", "Ev"}]], {t, 0, 2*Pi/10^6, 
+  2 Pi/(36*10^6)}]
+ParametricPlot[Re[{50, 100}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}, 
+  PlotRange -> All, AxesLabel -> {"Eu", "Ev"}, PlotStyle -> Red];
+Manipulate[
+ Show[%, ParametricPlot[
+   Re[u*{50, 100}*Exp[I*(10^6*t - 0)]], {u, 0, 1}, PlotRange -> All, 
+   AxesLabel -> {"Eu", "Ev"}]], {t, 0, 2*Pi/10^6, 2 Pi/(360*10^6)}]
+ParametricPlot[
+  Re[{50, 50 + 50*I}*Exp[I*(10^6*t - 0)]], {t, 0, 2*Pi/10^6}, 
+  PlotRange -> All, AxesLabel -> {"Eu", "Ev"}, PlotStyle -> Red];
+Manipulate[
+ Show[%, ParametricPlot[
+   Re[u*{50, 50 + 50*I}*Exp[I*(10^6*t - 0)]], {u, 0, 1}, 
+   PlotRange -> All, AxesLabel -> {"Eu", "Ev"}]], {t, 0, 2*Pi/10^6, 
+  2 Pi/(360*10^6)}]
