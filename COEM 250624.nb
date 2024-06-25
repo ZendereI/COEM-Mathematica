@@ -1,0 +1,30 @@
+
+E0 = 8.859187817*10^(-12);
+u0 = 4*Pi*10^(-6);
+c = 1/Sqrt[E0*u0];
+CE[z_, t_] := Re[{50, 100*I}*Exp[I*(10^6*t - (3*z*10^6)/c)]];
+H[z_, t_] := 
+  Re[3*Sqrt[E0/u0]*{-100*I, 50}*Exp[I*(t*10^6 - 3*z*10^6/c)]];
+Manipulate[
+ Show[ParametricPlot[CE[z, t], {t, 0, 2*Pi/10^6}, PlotRange -> All, 
+   PlotStyle -> Pink], 
+  ParametricPlot[CE[z, t1]*u, {u, 0, 1}, AspectRatio -> 1, 
+   PlotRange -> All, PlotStyle -> Green]], {t1, 0, 2*Pi/10^6, 
+  2*Pi/(36*10^6)}, {z, 0, 2*Pi*c/(3*10^6), 2*Pi*c/36*3*10^6}]
+Manipulate[
+ ParametricPlot[{CE[z, t1]*u, H[z, t1]*u}, {u, 0, 1}, 
+  AspectRatio -> 1, PlotRange -> {{-100, 100}, {-100, 100}}, 
+  PlotStyle -> Green], {t1, 0, 2*Pi/10^6, 2*Pi/(36*10^6)}, {z, 0, 
+  2*Pi/(3*Sqrt[u0*E0]*10^6), 2*Pi/(36*Sqrt[u0*E0]*3*10^6)}]
+Manipulate[
+ Show[ParametricPlot[CE[z, t1]*u, {u, 0, 1}, 
+   PlotRange -> {{-100, 100}, {-100, 100}}, PlotStyle -> Pink], 
+  ParametricPlot[{CE[z, t1]*u, H[z, t1]*u}, {u, 0, 1}, 
+   AspectRatio -> 1, PlotRange -> {{-100, 100}, {-100, 100}}, 
+   PlotStyle -> Green]], {t1, 0, 2*Pi/10^6, 2*Pi/(36*10^6)}, {z, 0, 
+  2*Pi*c/(3*10^6), 2*Pi*c/(36*3*10^6)}]
+Show[ParametricPlot[CE[2*Pi/(36*10^6), 0]*u, {u, 0, 1}, 
+  PlotRange -> {{-100, 100}, {-100, 100}}, PlotStyle -> Pink], 
+ ParametricPlot[{CE[2*Pi/(36*10^6), 0]*u, H[2*Pi/(36*10^6), 0]*u}, {u,
+    0, 1}, AspectRatio -> 1, PlotRange -> {{-100, 100}, {-100, 100}}, 
+  PlotStyle -> Green]]
