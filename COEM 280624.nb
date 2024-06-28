@@ -1,0 +1,48 @@
+\[Omega] = 320.3776*10^4;
+\[Beta] = 0.0425;
+\[Alpha] = 0.027900005259000556;
+E1 = 170;
+\[Theta]1 = 0;
+E2 = 110;
+\[Theta]2 = Pi/3;
+Z = (\[Omega]*4*Pi*10^-7)/(\[Beta] - I*\[Alpha]);
+CE[z_, t_] := 
+  Exp[-\[Alpha]*z]*
+   Re[{E1*Exp[I*\[Theta]1], E2*Exp[I*\[Omega]]}*
+     Exp[I*(\[Omega]*t - \[Beta]*z)]];
+H[z_, t_] := 
+  Exp[-\[Alpha]*z]*
+   Re[1/Z*Cross[{0, 0, 1}, {E1*Exp[I*\[Theta]1], E2*Exp[I*\[Theta]2], 
+        0}]*Exp[I*(\[Omega]*t - \[Beta]*z)]][[1 ;; 2]];
+(*z=0;t1=0;*)
+ParametricPlot[CE[z, t], {t, 0, 2*Pi/\[Omega]}, 
+ PlotRange -> {{-210, 210}, {-210, 210}}, 
+ PlotStyle -> {Thickness[0.01], Blue}]
+ParametricPlot[Abs[Z]*H[z, t], {t, 0, 2*Pi/\[Omega]}, 
+ PlotRange -> {{-210, 210}, {-210, 210}}, 
+ PlotStyle -> {Thickness[0.01], Green}]
+ParametricPlot[u*CE[z, t1], {u, 0, 1}, 
+ PlotRange -> {{-210, 210}, {-210, 210}}, 
+ PlotStyle -> {Thickness[0.01], Cyan}]
+ParametricPlot[u*Abs[Z]*H[z, t1], {u, 0, 1}, 
+ PlotRange -> {{-210, 210}, {-210, 210}}, 
+ PlotStyle -> {Thickness[0.01], Orange}]
+Manipulate[
+ Show[ParametricPlot[CE[z, t], {t, 0, 2*Pi/\[Omega]}, 
+   PlotRange -> {{-210, 210}, {-210, 210}}, 
+   PlotStyle -> {Thickness[0.01], Blue}, 
+   PlotLabel -> 
+    Row[{"\[Psi]=", 
+      ArcCos[Dot[CE[z, t1], 
+          H[z, t1]]/(Norm[CE[z, t1]]*Norm[H[z, t1]])]*180/Pi, 
+      "grados"}]], 
+  ParametricPlot[Abs[Z]*H[z, t], {t, 0, 2*Pi/\[Omega]}, 
+   PlotRange -> {{-210, 210}, {-210, 210}}, 
+   PlotStyle -> {Thickness[0.01], Green}], 
+  ParametricPlot[u*CE[z, t1], {u, 0, 1}, 
+   PlotRange -> {{-210, 210}, {-210, 210}}, 
+   PlotStyle -> {Thickness[0.01], Cyan}], 
+  ParametricPlot[u*Abs[Z]*H[z, t1], {u, 0, 1}, 
+   PlotRange -> {{-210, 210}, {-210, 210}}, 
+   PlotStyle -> {Thickness[0.01], Orange}]], {z, 0, 2*Pi/\[Beta], 
+  2*Pi/(20*\[Beta])}, {t1, 0, 2*Pi/\[Omega]}]
